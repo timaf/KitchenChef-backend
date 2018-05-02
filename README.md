@@ -9,7 +9,7 @@ After forked it, go to your github account and pull first,
 1. git init
 2. git pull origin master
 3. git add .
-4. git commit -m ""
+4. git commit -m "add project structure"
 5. git push origin master
 
 
