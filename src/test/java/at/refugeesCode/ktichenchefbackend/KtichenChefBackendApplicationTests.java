@@ -1,4 +1,4 @@
-package at.refugeescode.Ui;
+package at.refugeesCode.ktichenchefbackend;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UiApplicationTests {
+public class KtichenChefBackendApplicationTests {
 
 	@Test
 	public void contextLoads() {
