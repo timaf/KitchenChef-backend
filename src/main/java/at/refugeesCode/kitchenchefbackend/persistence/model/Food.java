@@ -3,6 +3,7 @@ package at.refugeesCode.kitchenchefbackend.persistence.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Document
@@ -13,19 +14,21 @@ public class Food {
     private String username;
     private String foodName;
     private String foodDescription;
+    private String ingredients;
+    private Duration preparationTime;
     private LocalDateTime dateTime;
-
-
-    public Food(String username, String foodName, String foodDescription, LocalDateTime dateTime) {
-        this.username = username;
-        this.foodName = foodName;
-        this.foodDescription = foodDescription;
-        this.dateTime = dateTime;
-    }
 
     public Food() {
     }
 
+    public Food(String username, String foodName, String foodDescription, String ingredients, Duration preparationTime, LocalDateTime dateTime) {
+        this.username = username;
+        this.foodName = foodName;
+        this.foodDescription = foodDescription;
+        this.ingredients = ingredients;
+        this.preparationTime = preparationTime;
+        this.dateTime = dateTime;
+    }
 
     public String getId() {
         return id;
@@ -59,6 +62,22 @@ public class Food {
         this.foodDescription = foodDescription;
     }
 
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Duration getPreparationTime() {
+        return preparationTime;
+    }
+
+    public void setPreparationTime(Duration preparationTime) {
+        this.preparationTime = preparationTime;
+    }
+
     public LocalDateTime getDateTime() {
         return dateTime;
     }
@@ -67,7 +86,6 @@ public class Food {
         this.dateTime = dateTime;
     }
 
-
     @Override
     public String toString() {
         return "Food{" +
@@ -75,6 +93,8 @@ public class Food {
                 ", username='" + username + '\'' +
                 ", foodName='" + foodName + '\'' +
                 ", foodDescription='" + foodDescription + '\'' +
+                ", ingredients='" + ingredients + '\'' +
+                ", preparationTime=" + preparationTime +
                 ", dateTime=" + dateTime +
                 '}';
     }
