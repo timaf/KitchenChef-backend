@@ -1,12 +1,12 @@
-package at.refugeesCode.ktichenchefbackend;
+package at.refugeesCode.kitchenchefbackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KtichenChefBackendApplication {
+public class KitchenChefBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(KtichenChefBackendApplication.class, args);
+		SpringApplication.run(at.refugeesCode.kitchenchefbackend.KitchenChefBackendApplication.class, args);
 	}
 }
