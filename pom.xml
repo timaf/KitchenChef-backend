@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>at.refugeesCode</groupId>
-	<artifactId>ktichen-chef-backend</artifactId>
+	<artifactId>KitchenChef-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ktichen-chef-backend</name>
+	<name>KitchenChef-backend</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

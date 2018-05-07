@@ -1,4 +1,4 @@
-package at.refugeesCode.ktichenchefbackend.model;
+package at.refugeesCode.kitchenchefbackend.persistence.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
