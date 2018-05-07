@@ -7,24 +7,24 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Document
-public class Food {
+public class Meal {
 
     @Id
     private String id;
     private String username;
-    private String foodName;
-    private String foodDescription;
+    private String mealName;
+    private String mealDescription;
     private String ingredients;
     private Duration preparationTime;
     private LocalDateTime dateTime;
 
-    public Food() {
+    public Meal() {
     }
 
-    public Food(String username, String foodName, String foodDescription, String ingredients, Duration preparationTime, LocalDateTime dateTime) {
+    public Meal(String username, String mealName, String mealDescription, String ingredients, Duration preparationTime, LocalDateTime dateTime) {
         this.username = username;
-        this.foodName = foodName;
-        this.foodDescription = foodDescription;
+        this.mealName = mealName;
+        this.mealDescription = mealDescription;
         this.ingredients = ingredients;
         this.preparationTime = preparationTime;
         this.dateTime = dateTime;
@@ -46,20 +46,20 @@ public class Food {
         this.username = username;
     }
 
-    public String getFoodName() {
-        return foodName;
+    public String getMealName() {
+        return mealName;
     }
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
     }
 
-    public String getFoodDescription() {
-        return foodDescription;
+    public String getMealDescription() {
+        return mealDescription;
     }
 
-    public void setFoodDescription(String foodDescription) {
-        this.foodDescription = foodDescription;
+    public void setMealDescription(String mealDescription) {
+        this.mealDescription = mealDescription;
     }
 
     public String getIngredients() {
@@ -91,8 +91,8 @@ public class Food {
         return "Food{" +
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
-                ", foodName='" + foodName + '\'' +
-                ", foodDescription='" + foodDescription + '\'' +
+                ", mealName='" + mealName + '\'' +
+                ", mealDescription='" + mealDescription + '\'' +
                 ", ingredients='" + ingredients + '\'' +
                 ", preparationTime=" + preparationTime +
                 ", dateTime=" + dateTime +
