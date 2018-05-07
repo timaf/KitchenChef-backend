@@ -1,4 +1,4 @@
-package at.refugeesCode.ktichenchefbackend;
+package at.refugeesCode.kitchenchefbackend;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
