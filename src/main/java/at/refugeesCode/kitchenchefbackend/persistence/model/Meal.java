@@ -10,7 +10,7 @@ public class Meal {
 
     @Id
     private String id;
-    private String username;
+    private String cookName;
     private String mealName;
     private String mealDescription;
     private String ingredients;
@@ -25,11 +25,12 @@ public class Meal {
     private Long preparationTime;
     private String dateTime;
 
+
     public Meal() {
     }
 
-    public Meal(String username, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime, Long preparationTime, String dateTime) {
-        this.username = username;
+    public Meal(String cookName, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime, Long preparationTime, String dateTime) {
+        this.cookName = cookName;
         this.mealName = mealName;
         this.mealDescription = mealDescription;
         this.ingredients = ingredients;
@@ -51,12 +52,12 @@ public class Meal {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getCookName() {
+        return cookName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCookName(String cookName) {
+        this.cookName = cookName;
     }
 
     public String getMealName() {
@@ -151,7 +152,7 @@ public class Meal {
     public String toString() {
         return "Meal{" +
                 "id='" + id + '\'' +
-                ", username='" + username + '\'' +
+                ", cookName='" + cookName + '\'' +
                 ", mealName='" + mealName + '\'' +
                 ", mealDescription='" + mealDescription + '\'' +
                 ", ingredients='" + ingredients + '\'' +
