@@ -19,6 +19,7 @@ public class Meal {
     private int month;
     private int day;
 
+    private int numberOfPeople;
     private LocalTime startTime;
     private LocalTime cookTime;
     private Long preparationTime;
@@ -27,7 +28,7 @@ public class Meal {
     public Meal() {
     }
 
-    public Meal(String username, String mealName, String mealDescription, String ingredients, int year, int month, int day, LocalTime startTime, LocalTime cookTime, Long preparationTime, String dateTime) {
+    public Meal(String username, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime, Long preparationTime, String dateTime) {
         this.username = username;
         this.mealName = mealName;
         this.mealDescription = mealDescription;
@@ -35,6 +36,7 @@ public class Meal {
         this.year = year;
         this.month = month;
         this.day = day;
+        this.numberOfPeople = numberOfPeople;
         this.startTime = startTime;
         this.cookTime = cookTime;
         this.preparationTime = preparationTime;
@@ -137,6 +139,14 @@ public class Meal {
         this.day = day;
     }
 
+    public int getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
+    public void setNumberOfPeople(int numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
+    }
+
     @Override
     public String toString() {
         return "Meal{" +
@@ -148,6 +158,7 @@ public class Meal {
                 ", year=" + year +
                 ", month=" + month +
                 ", day=" + day +
+                ", numberOfPeople=" + numberOfPeople +
                 ", startTime=" + startTime +
                 ", cookTime=" + cookTime +
                 ", preparationTime=" + preparationTime +
