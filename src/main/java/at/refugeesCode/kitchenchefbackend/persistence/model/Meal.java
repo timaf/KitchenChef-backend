@@ -25,6 +25,7 @@ public class Meal {
     private Long preparationTime;
     private String dateTime;
 
+
     public Meal() {
     }
 
