@@ -43,4 +43,8 @@ public class CookEndpoint {
         return mealRepository.findAll();
     }
 
+    @PutMapping("/{id}")
+    void deleteMeal(@PathVariable("id") String id){
+        mealRepository.deleteById(id);
+    }
 }
