@@ -25,7 +25,7 @@ public class CookEndpoint {
         this.userRepository = userRepository;
     }
 
-    @PostMapping
+    @PostMapping("/meals")
     Meal createMael(@RequestBody Meal meal){
 
         LocalDate dateOfEvent = LocalDate.of(meal.getYear(), meal.getMonth(), meal.getDay());
@@ -34,10 +34,11 @@ public class CookEndpoint {
         String format = dateFormat.format(dateOfEvent);
         meal.setDateTime(format);
 
-        LocalTime startTime = meal.getStartTime();
-        LocalTime cookTime = meal.getCookTime();
-        long between = ChronoUnit.MINUTES.between(startTime, cookTime);
-        meal.setPreparationTime(between);
+        LocalTime startCookingTime = meal.getStartCookingTime();
+        Long preparationTime = meal.getPreparationTime();
+
+        LocalTime startEatingTime = startCookingTime.plusMinutes(preparationTime);
+        meal.setStartEatingTime(startEatingTime);
 
         mealRepository.save(meal);
         return meal;
@@ -64,7 +65,7 @@ public class CookEndpoint {
     }
 
     @PutMapping("/edit/{id}")
-    Meal editMeal(@PathVariable("id") String id, @RequestParam String nameCook, String mealName, String mealDescription,
+    Meal editMeal(@PathVariable("id") String id, String nameCook, String mealName, String mealDescription,
                   String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime  cookTime,
                   Long preparationTime, String dateTime){
         Optional<Meal> mealEdit = mealRepository.findById(id);
@@ -77,8 +78,8 @@ public class CookEndpoint {
             mealEdit.get().setMonth(month);
             mealEdit.get().setDay(day);
             mealEdit.get().setNumberOfPeople(numberOfPeople);
-            mealEdit.get().setStartTime(startTime);
-            mealEdit.get().setCookTime(cookTime);
+            mealEdit.get().setStartCookingTime(startTime);
+            mealEdit.get().setStartEatingTime(cookTime);
             mealEdit.get().setPreparationTime(preparationTime);
             mealEdit.get().setDateTime(dateTime);
         }
