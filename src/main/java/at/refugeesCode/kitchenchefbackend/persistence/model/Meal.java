@@ -20,8 +20,8 @@ public class Meal {
     private int day;
 
     private int numberOfPeople;
-    private LocalTime startTime;
-    private LocalTime cookTime;
+    private LocalTime startCookingTime;
+    private LocalTime startEatingTime;
     private Long preparationTime;
     private String dateTime;
 
@@ -29,7 +29,7 @@ public class Meal {
     public Meal() {
     }
 
-    public Meal(String cookName, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime, Long preparationTime, String dateTime) {
+    public Meal(String cookName, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime startEatingTime, Long preparationTime, String dateTime) {
         this.cookName = cookName;
         this.mealName = mealName;
         this.mealDescription = mealDescription;
@@ -38,8 +38,8 @@ public class Meal {
         this.month = month;
         this.day = day;
         this.numberOfPeople = numberOfPeople;
-        this.startTime = startTime;
-        this.cookTime = cookTime;
+        this.startCookingTime = startTime;
+        this.startEatingTime = startEatingTime;
         this.preparationTime = preparationTime;
         this.dateTime = dateTime;
     }
@@ -100,20 +100,20 @@ public class Meal {
         this.dateTime = dateTime;
     }
 
-    public LocalTime getStartTime() {
-        return startTime;
+    public LocalTime getStartCookingTime() {
+        return startCookingTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
+    public void setStartCookingTime(LocalTime startCookingTime) {
+        this.startCookingTime = startCookingTime;
     }
 
-    public LocalTime getCookTime() {
-        return cookTime;
+    public LocalTime getStartEatingTime() {
+        return startEatingTime;
     }
 
-    public void setCookTime(LocalTime cookTime) {
-        this.cookTime = cookTime;
+    public void setStartEatingTime(LocalTime startEatingTime) {
+        this.startEatingTime = startEatingTime;
     }
 
     public int getYear() {
@@ -160,8 +160,8 @@ public class Meal {
                 ", month=" + month +
                 ", day=" + day +
                 ", numberOfPeople=" + numberOfPeople +
-                ", startTime=" + startTime +
-                ", cookTime=" + cookTime +
+                ", startCookingTime=" + startCookingTime +
+                ", startEatingTime=" + startEatingTime +
                 ", preparationTime=" + preparationTime +
                 ", dateTime='" + dateTime + '\'' +
                 '}';

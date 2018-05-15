@@ -25,7 +25,7 @@ public class CookEndpoint {
         this.userRepository = userRepository;
     }
 
-    @PostMapping
+    @PostMapping("/meals")
     Meal createMael(@RequestBody Meal meal){
 
         LocalDate dateOfEvent = LocalDate.of(meal.getYear(), meal.getMonth(), meal.getDay());
@@ -34,9 +34,9 @@ public class CookEndpoint {
         String format = dateFormat.format(dateOfEvent);
         meal.setDateTime(format);
 
-        LocalTime startTime = meal.getStartTime();
-        LocalTime cookTime = meal.getCookTime();
-        long between = ChronoUnit.MINUTES.between(startTime, cookTime);
+        LocalTime startCookingTime = meal.getStartCookingTime();
+        LocalTime startEatingTime = meal.getStartEatingTime();
+        long between = ChronoUnit.MINUTES.between(startCookingTime, startEatingTime);
         meal.setPreparationTime(between);
 
         mealRepository.save(meal);
@@ -77,8 +77,8 @@ public class CookEndpoint {
             mealEdit.get().setMonth(month);
             mealEdit.get().setDay(day);
             mealEdit.get().setNumberOfPeople(numberOfPeople);
-            mealEdit.get().setStartTime(startTime);
-            mealEdit.get().setCookTime(cookTime);
+            mealEdit.get().setStartCookingTime(startTime);
+            mealEdit.get().setStartEatingTime(cookTime);
             mealEdit.get().setPreparationTime(preparationTime);
             mealEdit.get().setDateTime(dateTime);
         }
