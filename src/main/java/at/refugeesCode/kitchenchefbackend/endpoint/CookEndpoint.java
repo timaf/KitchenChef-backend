@@ -1,9 +1,7 @@
 package at.refugeesCode.kitchenchefbackend.endpoint;
 
 import at.refugeesCode.kitchenchefbackend.persistence.model.AppUser;
-import at.refugeesCode.kitchenchefbackend.persistence.model.Assistants;
 import at.refugeesCode.kitchenchefbackend.persistence.model.Meal;
-import at.refugeesCode.kitchenchefbackend.persistence.repository.AssistantsRepository;
 import at.refugeesCode.kitchenchefbackend.persistence.repository.MealRepository;
 import at.refugeesCode.kitchenchefbackend.persistence.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
@@ -21,16 +19,14 @@ public class CookEndpoint {
 
     private MealRepository mealRepository;
     private UserRepository userRepository;
-    private AssistantsRepository assistantsRepository;
 
-    public CookEndpoint(MealRepository mealRepository, UserRepository userRepository, AssistantsRepository assistantsRepository) {
+    public CookEndpoint(MealRepository mealRepository, UserRepository userRepository) {
         this.mealRepository = mealRepository;
         this.userRepository = userRepository;
-        this.assistantsRepository = assistantsRepository;
     }
 
     @PostMapping
-    Meal createMael(@RequestBody Meal meal, @RequestParam Assistants assistant){
+    Meal createMael(@RequestBody Meal meal){
 
         LocalDate dateOfEvent = LocalDate.of(meal.getYear(), meal.getMonth(), meal.getDay());
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd LLLL yyyy");
@@ -44,7 +40,6 @@ public class CookEndpoint {
         meal.setPreparationTime(between);
 
         mealRepository.save(meal);
-        assistantsRepository.save(assistant);
         return meal;
     }
 
@@ -91,19 +86,4 @@ public class CookEndpoint {
 
     }
 
-    @PutMapping("/assistant/{mealId}/{userId}/{assistant}")
-    Meal assistants(@PathVariable("assistant") String assistantId, @PathVariable("userId") String userId,
-                    @PathVariable("mealId") String mealId, @RequestParam String assistant){
-        Optional<AppUser> user_Id = userRepository.findById(userId);
-        Optional<Meal> meal_Id = mealRepository.findById(mealId);
-        if(user_Id.isPresent()){
-            String Name = user_Id.get().getUsername();
-            if(meal_Id.isPresent()){
-                Optional<Assistants> assistant_id = assistantsRepository.findById(assistantId);
-                assistant_id.get().setAssistant(assistant);
-            }
-            return meal_Id.get();
-        }
-        return meal_Id.get();
-    }
 }
