@@ -35,10 +35,10 @@ public class CookEndpoint {
         meal.setDateTime(format);
 
         LocalTime startCookingTime = meal.getStartCookingTime();
-        LocalTime startEatingTime = meal.getStartEatingTime();
-        long between = ChronoUnit.MINUTES.between(startCookingTime, startEatingTime);
-        meal.setPreparationTime(between);
+        Long preparationTime = meal.getPreparationTime();
 
+        LocalTime startEatingTime = startCookingTime.plusMinutes(preparationTime);
+        meal.setStartEatingTime(startEatingTime);
         mealRepository.save(meal);
         return meal;
     }
