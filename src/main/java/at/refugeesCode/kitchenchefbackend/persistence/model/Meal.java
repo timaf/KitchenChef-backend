@@ -24,12 +24,13 @@ public class Meal {
     private LocalTime startEatingTime;
     private Long preparationTime;
     private String dateTime;
+    private String foodImage;
 
 
     public Meal() {
     }
 
-    public Meal(String cookName, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime startEatingTime, Long preparationTime, String dateTime) {
+    public Meal(String cookName, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startCookingTime, LocalTime startEatingTime, Long preparationTime, String dateTime, String foodImage) {
         this.cookName = cookName;
         this.mealName = mealName;
         this.mealDescription = mealDescription;
@@ -38,10 +39,11 @@ public class Meal {
         this.month = month;
         this.day = day;
         this.numberOfPeople = numberOfPeople;
-        this.startCookingTime = startTime;
+        this.startCookingTime = startCookingTime;
         this.startEatingTime = startEatingTime;
         this.preparationTime = preparationTime;
         this.dateTime = dateTime;
+        this.foodImage = foodImage;
     }
 
     public String getId() {
@@ -148,6 +150,14 @@ public class Meal {
         this.numberOfPeople = numberOfPeople;
     }
 
+    public String getFoodImage() {
+        return foodImage;
+    }
+
+    public void setFoodImage(String foodImage) {
+        this.foodImage = foodImage;
+    }
+
     @Override
     public String toString() {
         return "Meal{" +
@@ -164,6 +174,7 @@ public class Meal {
                 ", startEatingTime=" + startEatingTime +
                 ", preparationTime=" + preparationTime +
                 ", dateTime='" + dateTime + '\'' +
+                ", foodImage='" + foodImage + '\'' +
                 '}';
     }
 }

@@ -39,7 +39,6 @@ public class CookEndpoint {
 
         LocalTime startEatingTime = startCookingTime.plusMinutes(preparationTime);
         meal.setStartEatingTime(startEatingTime);
-
         mealRepository.save(meal);
         return meal;
     }
