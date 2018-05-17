@@ -64,7 +64,7 @@ public class CookEndpoint {
     }
 
     @PutMapping("/edit/{id}")
-    Meal editMeal(@PathVariable("id") String id, @RequestParam String nameCook, String mealName, String mealDescription,
+    Meal editMeal(@PathVariable("id") String id, String nameCook, String mealName, String mealDescription,
                   String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime  cookTime,
                   Long preparationTime, String dateTime){
         Optional<Meal> mealEdit = mealRepository.findById(id);
