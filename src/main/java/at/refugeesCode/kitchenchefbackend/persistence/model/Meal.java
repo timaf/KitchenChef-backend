@@ -3,8 +3,7 @@ package at.refugeesCode.kitchenchefbackend.persistence.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Document
 public class Meal {
@@ -15,21 +14,36 @@ public class Meal {
     private String mealName;
     private String mealDescription;
     private String ingredients;
-    private String numberOfPeople;
-    private Duration preparationTime;
-    private LocalDateTime dateTime;
+
+    private int year;
+    private int month;
+    private int day;
+
+    private int numberOfPeople;
+    private LocalTime startCookingTime;
+    private LocalTime startEatingTime;
+    private Long preparationTime;
+    private String dateTime;
+    private String foodImage;
+
 
     public Meal() {
     }
 
-    public Meal(String cookName, String mealName, String mealDescription, String ingredients, String numberOfPeople, Duration preparationTime, LocalDateTime dateTime) {
+    public Meal(String cookName, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startCookingTime, LocalTime startEatingTime, Long preparationTime, String dateTime, String foodImage) {
         this.cookName = cookName;
         this.mealName = mealName;
         this.mealDescription = mealDescription;
         this.ingredients = ingredients;
+        this.year = year;
+        this.month = month;
+        this.day = day;
         this.numberOfPeople = numberOfPeople;
+        this.startCookingTime = startCookingTime;
+        this.startEatingTime = startEatingTime;
         this.preparationTime = preparationTime;
         this.dateTime = dateTime;
+        this.foodImage = foodImage;
     }
 
     public String getId() {
@@ -72,28 +86,76 @@ public class Meal {
         this.ingredients = ingredients;
     }
 
-    public String getNumberOfPeople() {
-        return numberOfPeople;
-    }
-
-    public void setNumberOfPeople(String numberOfPeople) {
-        this.numberOfPeople = numberOfPeople;
-    }
-
-    public Duration getPreparationTime() {
+    public Long getPreparationTime() {
         return preparationTime;
     }
 
-    public void setPreparationTime(Duration preparationTime) {
+    public void setPreparationTime(Long preparationTime) {
         this.preparationTime = preparationTime;
     }
 
-    public LocalDateTime getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public LocalTime getStartCookingTime() {
+        return startCookingTime;
+    }
+
+    public void setStartCookingTime(LocalTime startCookingTime) {
+        this.startCookingTime = startCookingTime;
+    }
+
+    public LocalTime getStartEatingTime() {
+        return startEatingTime;
+    }
+
+    public void setStartEatingTime(LocalTime startEatingTime) {
+        this.startEatingTime = startEatingTime;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
+    public void setNumberOfPeople(int numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
+    }
+
+    public String getFoodImage() {
+        return foodImage;
+    }
+
+    public void setFoodImage(String foodImage) {
+        this.foodImage = foodImage;
     }
 
     @Override
@@ -104,9 +166,15 @@ public class Meal {
                 ", mealName='" + mealName + '\'' +
                 ", mealDescription='" + mealDescription + '\'' +
                 ", ingredients='" + ingredients + '\'' +
-                ", numberOfPeople='" + numberOfPeople + '\'' +
+                ", year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                ", numberOfPeople=" + numberOfPeople +
+                ", startCookingTime=" + startCookingTime +
+                ", startEatingTime=" + startEatingTime +
                 ", preparationTime=" + preparationTime +
-                ", dateTime=" + dateTime +
+                ", dateTime='" + dateTime + '\'' +
+                ", foodImage='" + foodImage + '\'' +
                 '}';
     }
 }
