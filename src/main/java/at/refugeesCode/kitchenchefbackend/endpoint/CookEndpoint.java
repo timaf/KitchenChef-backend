@@ -19,7 +19,6 @@ public class CookEndpoint {
 
     private MealRepository mealRepository;
     private UserRepository userRepository;
-    private Meal meal;
 
     public CookEndpoint(MealRepository mealRepository, UserRepository userRepository) {
         this.mealRepository = mealRepository;
