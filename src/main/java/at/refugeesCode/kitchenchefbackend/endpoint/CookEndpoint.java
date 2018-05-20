@@ -19,6 +19,7 @@ public class CookEndpoint {
 
     private MealRepository mealRepository;
     private UserRepository userRepository;
+    private Meal meal;
 
     public CookEndpoint(MealRepository mealRepository, UserRepository userRepository) {
         this.mealRepository = mealRepository;
@@ -53,6 +54,13 @@ public class CookEndpoint {
         return userRepository.findAll();
     }
 
+    // Meal model should be changed to be able to write, calculate and show ingredients in detail.
+    @GetMapping("/mealdetail/{id}")
+    String showMealIngredients(@PathVariable("id") String id) {
+        Meal meal = mealRepository.findById(id).get();
+        return meal.getIngredients();
+    }
+
     @PostMapping("/newuser")
     AppUser addUser(@RequestBody AppUser newUser){
         return userRepository.save(newUser);
@@ -83,7 +91,6 @@ public class CookEndpoint {
             mealEdit.get().setDateTime(dateTime);
         }
         return mealEdit.get();
-
     }
 
 }
