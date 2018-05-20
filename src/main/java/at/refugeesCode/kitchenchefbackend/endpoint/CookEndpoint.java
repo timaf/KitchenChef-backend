@@ -53,6 +53,11 @@ public class CookEndpoint {
         return userRepository.findAll();
     }
 
+    @GetMapping("/mealdetail/{id}")
+    Meal detailPage(@PathVariable("id") String id) {
+        return mealRepository.findById(id).get();
+
+    }
     // Meal model should be changed to be able to write, calculate and show ingredients in detail.
     @GetMapping("/mealdetail/shoppinglist/{id}")
     String showMealIngredients(@PathVariable("id") String id) {
