@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +52,18 @@ public class CookEndpoint {
         return userRepository.findAll();
     }
 
+    @GetMapping("/mealdetail/{id}")
+    Meal detailPage(@PathVariable("id") String id) {
+        return mealRepository.findById(id).get();
+
+    }
+    // Meal model should be changed to be able to write, calculate and show ingredients in detail.
+    @GetMapping("/mealdetail/shoppinglist/{id}")
+    String showMealIngredients(@PathVariable("id") String id) {
+        Meal meal = mealRepository.findById(id).get();
+        return meal.getIngredients();
+    }
+
     @PostMapping("/newuser")
     AppUser addUser(@RequestBody AppUser newUser){
         return userRepository.save(newUser);
@@ -83,7 +94,6 @@ public class CookEndpoint {
             mealEdit.get().setDateTime(dateTime);
         }
         return mealEdit.get();
-
     }
 
 }
