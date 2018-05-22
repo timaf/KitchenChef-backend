@@ -21,7 +21,7 @@ public class CookEndpoint {
     }
 
     @PostMapping("/meals")
-    Meal createMael(@RequestBody Meal meal) {
+    Meal createMeal(@RequestBody Meal meal) {
 
         LocalDate dateOfEvent = LocalDate.of(meal.getYear(), meal.getMonth(), meal.getDay());
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd LLLL yyyy");
