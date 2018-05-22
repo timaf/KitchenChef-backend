@@ -1,9 +1,7 @@
 package at.refugeesCode.kitchenchefbackend.endpoint;
 
-import at.refugeesCode.kitchenchefbackend.persistence.model.AppUser;
 import at.refugeesCode.kitchenchefbackend.persistence.model.Meal;
 import at.refugeesCode.kitchenchefbackend.persistence.repository.MealRepository;
-import at.refugeesCode.kitchenchefbackend.persistence.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -17,15 +15,13 @@ import java.util.Optional;
 public class CookEndpoint {
 
     private MealRepository mealRepository;
-    private UserRepository userRepository;
 
-    public CookEndpoint(MealRepository mealRepository, UserRepository userRepository) {
+    public CookEndpoint(MealRepository mealRepository) {
         this.mealRepository = mealRepository;
-        this.userRepository = userRepository;
     }
 
     @PostMapping("/meals")
-    Meal createMael(@RequestBody Meal meal){
+    Meal createMael(@RequestBody Meal meal) {
 
         LocalDate dateOfEvent = LocalDate.of(meal.getYear(), meal.getMonth(), meal.getDay());
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd LLLL yyyy");
@@ -43,20 +39,17 @@ public class CookEndpoint {
     }
 
     @GetMapping("/meals")
-    List<Meal> getAllMeals(){
+    List<Meal> getAllMeals() {
         return mealRepository.findAll();
     }
 
-    @GetMapping("/users")
-    List<AppUser> getAllusers(){
-        return userRepository.findAll();
-    }
 
     @GetMapping("/mealdetail/{id}")
     Meal detailPage(@PathVariable("id") String id) {
         return mealRepository.findById(id).get();
 
     }
+
     // Meal model should be changed to be able to write, calculate and show ingredients in detail.
     @GetMapping("/mealdetail/shoppinglist/{id}")
     String showMealIngredients(@PathVariable("id") String id) {
@@ -64,22 +57,18 @@ public class CookEndpoint {
         return meal.getIngredients();
     }
 
-    @PostMapping("/newuser")
-    AppUser addUser(@RequestBody AppUser newUser){
-        return userRepository.save(newUser);
-    }
 
     @PutMapping("/delete/{id}")
-    void deleteMeal(@PathVariable("id") String id){
+    void deleteMeal(@PathVariable("id") String id) {
         mealRepository.deleteById(id);
     }
 
     @PutMapping("/edit/{id}")
     Meal editMeal(@PathVariable("id") String id, String nameCook, String mealName, String mealDescription,
-                  String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime  cookTime,
-                  Long preparationTime, String dateTime){
+                  String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime,
+                  Long preparationTime, String dateTime) {
         Optional<Meal> mealEdit = mealRepository.findById(id);
-        if (mealEdit.isPresent()){
+        if (mealEdit.isPresent()) {
             mealEdit.get().setCookName(nameCook);
             mealEdit.get().setMealName(mealName);
             mealEdit.get().setMealDescription(mealDescription);
