@@ -15,7 +15,7 @@ public class Meal {
     private String cookName;
     private String mealName;
     private String mealDescription;
-    private List<String> ingredients = new ArrayList<>();
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     private int year;
     private int month;
@@ -32,7 +32,7 @@ public class Meal {
     public Meal() {
     }
 
-    public Meal(String cookName, String mealName, String mealDescription, List<String> ingredients, int year, int month, int day, int numberOfPeople, LocalTime startCookingTime, LocalTime startEatingTime, Long preparationTime, String dateTime, String foodImage) {
+    public Meal(String cookName, String mealName, String mealDescription, List<Ingredient> ingredients, int year, int month, int day, int numberOfPeople, LocalTime startCookingTime, LocalTime startEatingTime, Long preparationTime, String dateTime, String foodImage) {
         this.cookName = cookName;
         this.mealName = mealName;
         this.mealDescription = mealDescription;
@@ -80,11 +80,11 @@ public class Meal {
         this.mealDescription = mealDescription;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
