@@ -1,6 +1,7 @@
 package at.refugeesCode.kitchenchefbackend.endpoint;
 
 import at.refugeesCode.kitchenchefbackend.controller.MealController;
+import at.refugeesCode.kitchenchefbackend.persistence.model.Ingredient;
 import at.refugeesCode.kitchenchefbackend.persistence.model.Meal;
 import at.refugeesCode.kitchenchefbackend.persistence.repository.MealRepository;
 import org.springframework.web.bind.annotation.*;
@@ -54,7 +55,7 @@ public class MealEndpoint {
     }
 
     @GetMapping("/mealdetail/ingredients/{id}")
-    List<String> showIngredients(@PathVariable("id") String id) {
+    List<Ingredient> showIngredients(@PathVariable("id") String id) {
         return mealController.showIngredients(id);
     }
 
@@ -66,7 +67,7 @@ public class MealEndpoint {
 
     @PutMapping("/edit/{id}")
     Meal editMeal(@PathVariable("id") String id, String cookName, String mealName, String mealDescription,
-                  List<String> ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime,
+                  List<Ingredient> ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime,
                   Long preparationTime, String dateTime) {
         Optional<Meal> mealEdit = mealRepository.findById(id);
         if (mealEdit.isPresent()) {
