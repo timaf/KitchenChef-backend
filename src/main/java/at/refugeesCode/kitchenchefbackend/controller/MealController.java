@@ -1,7 +1,10 @@
 package at.refugeesCode.kitchenchefbackend.controller;
 
+import at.refugeesCode.kitchenchefbackend.persistence.model.Meal;
 import at.refugeesCode.kitchenchefbackend.persistence.repository.MealRepository;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 @Controller
 public class MealController {
@@ -12,5 +15,8 @@ public class MealController {
         this.mealRepository = mealRepository;
     }
 
-
+    public List<String> showIngredients(String id) {
+        Meal meal = mealRepository.findById(id).get();
+        return meal.getIngredients();
+    }
 }
