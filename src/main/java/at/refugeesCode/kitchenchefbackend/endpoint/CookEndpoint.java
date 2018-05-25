@@ -52,7 +52,7 @@ public class CookEndpoint {
 
     // Meal model should be changed to be able to write, calculate and show ingredients in detail.
     @GetMapping("/mealdetail/shoppinglist/{id}")
-    String showMealIngredients(@PathVariable("id") String id) {
+    List<String> showMealIngredients(@PathVariable("id") String id) {
         Meal meal = mealRepository.findById(id).get();
         return meal.getIngredients();
     }
@@ -65,7 +65,7 @@ public class CookEndpoint {
 
     @PutMapping("/edit/{id}")
     Meal editMeal(@PathVariable("id") String id, String nameCook, String mealName, String mealDescription,
-                  String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime,
+                  List<String> ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime,
                   Long preparationTime, String dateTime) {
         Optional<Meal> mealEdit = mealRepository.findById(id);
         if (mealEdit.isPresent()) {
