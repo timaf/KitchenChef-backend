@@ -12,5 +12,5 @@ public class MealController {
         this.mealRepository = mealRepository;
     }
 
-    
+
 }
