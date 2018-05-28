@@ -1,5 +1,7 @@
 package at.refugeesCode.kitchenchefbackend.endpoint;
 
+import at.refugeesCode.kitchenchefbackend.controller.MealController;
+import at.refugeesCode.kitchenchefbackend.persistence.model.Ingredient;
 import at.refugeesCode.kitchenchefbackend.persistence.model.Meal;
 import at.refugeesCode.kitchenchefbackend.persistence.repository.MealRepository;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +14,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
-public class CookEndpoint {
+public class MealEndpoint {
 
     private MealRepository mealRepository;
+    private MealController mealController;
 
-    public CookEndpoint(MealRepository mealRepository) {
+    public MealEndpoint(MealRepository mealRepository, MealController mealController) {
         this.mealRepository = mealRepository;
+        this.mealController = mealController;
     }
 
     @PostMapping("/meals")
@@ -50,11 +54,9 @@ public class CookEndpoint {
 
     }
 
-    // Meal model should be changed to be able to write, calculate and show ingredients in detail.
-    @GetMapping("/mealdetail/shoppinglist/{id}")
-    String showMealIngredients(@PathVariable("id") String id) {
-        Meal meal = mealRepository.findById(id).get();
-        return meal.getIngredients();
+    @GetMapping("/mealdetail/ingredients/{id}")
+    List<Ingredient> showIngredients(@PathVariable("id") String id) {
+        return mealController.showIngredients(id);
     }
 
 
@@ -64,12 +66,12 @@ public class CookEndpoint {
     }
 
     @PutMapping("/edit/{id}")
-    Meal editMeal(@PathVariable("id") String id, String nameCook, String mealName, String mealDescription,
-                  String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime,
+    Meal editMeal(@PathVariable("id") String id, String cookName, String mealName, String mealDescription,
+                  List<Ingredient> ingredients, int year, int month, int day, int numberOfPeople, LocalTime startTime, LocalTime cookTime,
                   Long preparationTime, String dateTime) {
         Optional<Meal> mealEdit = mealRepository.findById(id);
         if (mealEdit.isPresent()) {
-            mealEdit.get().setCookName(nameCook);
+            mealEdit.get().setCookName(cookName);
             mealEdit.get().setMealName(mealName);
             mealEdit.get().setMealDescription(mealDescription);
             mealEdit.get().setIngredients(ingredients);

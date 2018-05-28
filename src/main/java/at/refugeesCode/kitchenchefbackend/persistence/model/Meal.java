@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Document
 public class Meal {
@@ -13,7 +15,7 @@ public class Meal {
     private String cookName;
     private String mealName;
     private String mealDescription;
-    private String ingredients;
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     private int year;
     private int month;
@@ -30,7 +32,7 @@ public class Meal {
     public Meal() {
     }
 
-    public Meal(String cookName, String mealName, String mealDescription, String ingredients, int year, int month, int day, int numberOfPeople, LocalTime startCookingTime, LocalTime startEatingTime, Long preparationTime, String dateTime, String foodImage) {
+    public Meal(String cookName, String mealName, String mealDescription, List<Ingredient> ingredients, int year, int month, int day, int numberOfPeople, LocalTime startCookingTime, LocalTime startEatingTime, Long preparationTime, String dateTime, String foodImage) {
         this.cookName = cookName;
         this.mealName = mealName;
         this.mealDescription = mealDescription;
@@ -78,44 +80,12 @@ public class Meal {
         this.mealDescription = mealDescription;
     }
 
-    public String getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
-    }
-
-    public Long getPreparationTime() {
-        return preparationTime;
-    }
-
-    public void setPreparationTime(Long preparationTime) {
-        this.preparationTime = preparationTime;
-    }
-
-    public String getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public LocalTime getStartCookingTime() {
-        return startCookingTime;
-    }
-
-    public void setStartCookingTime(LocalTime startCookingTime) {
-        this.startCookingTime = startCookingTime;
-    }
-
-    public LocalTime getStartEatingTime() {
-        return startEatingTime;
-    }
-
-    public void setStartEatingTime(LocalTime startEatingTime) {
-        this.startEatingTime = startEatingTime;
     }
 
     public int getYear() {
@@ -150,6 +120,38 @@ public class Meal {
         this.numberOfPeople = numberOfPeople;
     }
 
+    public LocalTime getStartCookingTime() {
+        return startCookingTime;
+    }
+
+    public void setStartCookingTime(LocalTime startCookingTime) {
+        this.startCookingTime = startCookingTime;
+    }
+
+    public LocalTime getStartEatingTime() {
+        return startEatingTime;
+    }
+
+    public void setStartEatingTime(LocalTime startEatingTime) {
+        this.startEatingTime = startEatingTime;
+    }
+
+    public Long getPreparationTime() {
+        return preparationTime;
+    }
+
+    public void setPreparationTime(Long preparationTime) {
+        this.preparationTime = preparationTime;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
     public String getFoodImage() {
         return foodImage;
     }
@@ -165,7 +167,7 @@ public class Meal {
                 ", cookName='" + cookName + '\'' +
                 ", mealName='" + mealName + '\'' +
                 ", mealDescription='" + mealDescription + '\'' +
-                ", ingredients='" + ingredients + '\'' +
+                ", ingredients=" + ingredients +
                 ", year=" + year +
                 ", month=" + month +
                 ", day=" + day +
