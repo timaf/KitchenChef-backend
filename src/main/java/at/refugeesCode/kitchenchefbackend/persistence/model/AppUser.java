@@ -3,23 +3,20 @@ package at.refugeesCode.kitchenchefbackend.persistence.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Document
 public class AppUser {
 
     @Id
     private String id;
+
     private String username;
+
     private String password;
 
-
-    public AppUser(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    public AppUser() {
-    }
-
+    private Set<String> authorities = new HashSet<>();
 
     public String getId() {
         return id;
@@ -45,6 +42,13 @@ public class AppUser {
         this.password = password;
     }
 
+    public Set<String> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<String> authorities) {
+        this.authorities = authorities;
+    }
 
     @Override
     public String toString() {
@@ -52,6 +56,7 @@ public class AppUser {
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", authorities=" + authorities +
                 '}';
     }
 }
