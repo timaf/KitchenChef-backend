@@ -10,14 +10,14 @@ import java.util.List;
 @Controller
 public class MealController {
 
-    private MealRepository mealRepository;
-
-    public MealController(MealRepository mealRepository) {
-        this.mealRepository = mealRepository;
-    }
-
-    public List<Ingredient> showIngredients(String id) {
-        Meal meal = mealRepository.findById(id).get();
-        return meal.getIngredients();
-    }
+//    private MealRepository mealRepository;
+//
+//    public MealController(MealRepository mealRepository) {
+//        this.mealRepository = mealRepository;
+//    }
+//
+//    public List<Ingredient> showIngredients(String id) {
+//        Meal meal = mealRepository.findById(id).get();
+//        return meal.getIngredients();
+//    }
 }
