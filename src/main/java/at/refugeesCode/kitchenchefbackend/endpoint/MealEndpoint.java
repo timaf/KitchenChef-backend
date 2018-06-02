@@ -54,10 +54,11 @@ public class MealEndpoint {
 
     }
 
-    @GetMapping("/mealdetail/ingredients/{id}")
-    List<Ingredient> showIngredients(@PathVariable("id") String id) {
-        return mealController.showIngredients(id);
-    }
+//    @GetMapping("/mealdetail/ingredients/{id}")
+//    List<Ingredient> showIngredients(@PathVariable("id") String id) {
+//        return mealController.showIngredients(id);
+//    }
+
 
 
     @PutMapping("/delete/{id}")
